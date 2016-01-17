@@ -1,13 +1,54 @@
 #
 # Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Customise to your needs...
+
+##
+# print dropbox path
+##
+function dropbox()
+{
+  if command -v node >/dev/null 2>&1; then
+    if [[ $OSTYPE = msys* ]]; then
+      echo "Please update .zshrc with windows compatability, i think its in %APPDATA%\Dropbox\info.json"
+    else
+      echo $(node -e 'process.stdout.write(require(process.env.HOME + "/.dropbox/info.json").personal.path);');
+    fi
+  else
+    echo "nodejs is required, improve with another way to read json or install node"
+  fi
+}
+
+# mac only
+if [[ $OSTYPE = darwin* ]]; then
+  # mac dns flush helper
+  alias dns='sudo dscacheutil -flushcache'
+fi
+
+# git config
+export GIT_EDITOR='vim +startinsert'
+
+# git is hard to type
+alias gti=git
+alias gt=git
+alias got=git
+
+# reduce git induced RSI
+alias gc='git commit -v'
+alias gs='git status'
+alias gall='git add --all .'
+alias gd='git diff'
+
+# i like progress
+alias cp='rsync -aP'
+alias mv='rsync -aP --remove-source-files'
+
+# reduce docker induced RSI
+alias doco=docker-compose
+alias dockerm=docker-machine
