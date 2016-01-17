@@ -46,8 +46,8 @@ alias gall='git add --all .'
 alias gd='git diff'
 
 # i like progress
-alias cp='rsync -aP'
-alias mv='rsync -aP --remove-source-files'
+alias rcp='rsync -aP'
+alias rmv='rsync -aP --remove-source-files'
 
 # reduce docker induced RSI
 alias doco=docker-compose
