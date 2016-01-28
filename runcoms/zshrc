@@ -12,7 +12,9 @@ fi
 # Customise to your needs...
 
 # source dotfiles env
-source "$DOTDIR/.my-dotfiles.env"
+if [[ -f "$DOTDIR/.my-dotfiles.env" ]]; then
+  source "$DOTDIR/.my-dotfiles.env"
+fi
 
 ##
 # print dropbox path
