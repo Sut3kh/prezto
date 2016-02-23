@@ -2,12 +2,19 @@
 # Executes commands at the start of an interactive session.
 #
 
+DOTDIR=${ZDOTDIR:-$HOME}
+
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+if [[ -s "$DOTDIR/.zprezto/init.zsh" ]]; then
+  source "$DOTDIR/.zprezto/init.zsh"
 fi
 
 # Customise to your needs...
+
+# source dotfiles env
+if [[ -f "$DOTDIR/.my-dotfiles.env" ]]; then
+  source "$DOTDIR/.my-dotfiles.env"
+fi
 
 ##
 # print dropbox path
@@ -23,6 +30,22 @@ function dropbox()
   else
     echo "nodejs is required, improve with another way to read json or install node"
   fi
+}
+
+##
+# helper to output installed atom modules
+##
+function dotfiles_apm-export()
+{
+  apm list -bi | grep -Eo '^[^@]+' > "$DOTFILES_INSTALLDIR/conf/apm_modules.txt"
+}
+
+##
+# helper to install atom modules
+##
+function dotfiles_apm-install()
+{
+  apm install --packages-file "$DOTFILES_INSTALLDIR/conf/apm_modules.txt"
 }
 
 # mac only
