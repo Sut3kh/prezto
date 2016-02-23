@@ -29,6 +29,9 @@ function dropbox()
 if [[ $OSTYPE = darwin* ]]; then
   # mac dns flush helper
   alias dns='sudo dscacheutil -flushcache'
+
+  # ctags via homebrew
+  alias ctags="`brew --prefix`/bin/ctags"
 fi
 
 # git config
