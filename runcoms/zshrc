@@ -78,3 +78,10 @@ alias rmv='rsync -aP --remove-source-files'
 # reduce docker induced RSI
 alias doco=docker-compose
 alias dockerm=docker-machine
+
+# ww-project aliases
+alias pdrush=project drush
+alias pdrushl=project drushl
+alias pdrupal=project drupal
+alias penv=project env
+
