@@ -85,3 +85,5 @@ alias pdrushl='project drushl'
 alias pdrupal='project drupal'
 alias penv='project env'
 
+# colourful lists are nice
+alias ls="${aliases[ls]:-ls} -lh"
